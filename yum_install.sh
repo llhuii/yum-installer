@@ -1,5 +1,5 @@
 #!/bin/bash
-base=${1:-https://mirrors.huaweicloud.com/euler/2.8/os}
+base=${1:-https://mirrors.huaweicloud.com/euler/2.8/os/aarch64/Packages/}
 force=true
 echo|awk -v base=$base -v force=$force root=${2} '
 sub(/.*<a href="/,e) {
@@ -72,8 +72,7 @@ BEGIN{
   Extra["libimaevm"] = "ima-evm-utils"
   force=force?"--force ": ""
 
-  base = base?base:"http://euleros.huawei.com/2.8"
-  base = base "/aarch64/Packages/"
+  base = base?base:"http://euleros.huawei.com/2.8/aarch64/Packages/"
 
   system("wget "base" -O packages.html")
   ARGC=2
