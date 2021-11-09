@@ -1,7 +1,7 @@
 #!/bin/bash
 base=${1:-https://mirrors.huaweicloud.com/euler/2.8/os/aarch64/Packages/}
 force=true
-echo|awk -v base=$base -v force=$force root=${2} '
+echo|awk -v base=$base -v force=$force -v root=${2} '
 sub(/.*<a href="/,e) {
   sub(/"/,FS);
   link=$1;
@@ -74,7 +74,7 @@ BEGIN{
 
   base = base?base:"http://euleros.huawei.com/2.8/aarch64/Packages/"
 
-  system("wget "base" -O packages.html")
+  system("wget --no-check-certificate "base" -O packages.html")
   ARGC=2
   ARGV[1]="packages.html"
 
